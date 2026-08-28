@@ -98,10 +98,18 @@ dominate that. The smaller cases finish in seconds.
 **The square enumeration is validated against an external theorem.** Every
 result here rests on the list of axis-aligned squares the solvers enumerate. That
 same list, encoded as SAT ("does a square-free 2-colouring of the n × n grid
-exist?"), reproduces Bacher and Eliahou's threshold: satisfiable for
-n = 12, 13, 14, which is their published finding that the 14 × 14 board still
-admits square-free colourings. This checks the geometric data against outside
-work rather than against more of my own code. See `sat_check.py`.
+exist?"), reproduces Bacher and Eliahou's threshold n₀ = 15 exactly, from both
+sides:
+
+| n | square-free 2-colouring | Bacher–Eliahou |
+|---:|---|---|
+| 12, 13, 14 | exists | exists ✓ |
+| 15 | does not exist (UNSAT, 4842 s) | does not exist ✓ |
+
+This is the only check here that is not my own code marking its own homework: it
+tests the geometric data every solver depends on against an external published
+theorem, and agrees on both the satisfiable and the unsatisfiable side. See
+`sat_check.py` and `logs/sat15.out`.
 
 **Reproduces the literature.** All three published values come back correct:
 n = 3 and 4 draw, n = 5 a first-player win — and the n = 5 win first appears at
