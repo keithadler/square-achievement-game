@@ -5,3 +5,5 @@ sq4
 sq3strict
 *.o
 *.dSYM/
+OPG-*.txt
+x-thread.txt

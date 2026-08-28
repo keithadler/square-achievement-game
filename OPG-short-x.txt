@@ -1,9 +1,0 @@
-All nine remaining cases are first-player wins, each forced within 13 plies. Search nodes for n=6..14: 2.0M, 2.6M, 5.7M, 21.7M, 56.8M, 116.7M, 231.7M, 735.3M, 746.5M.
-
-With Jenrich (n<=5) and Bacher-Eliahou plus strategy stealing (n>=15), this settles the problem as stated: a draw for n<=4, a first-player win for every n>=5.
-
-Method: negamax with the search horizon scored as a draw, so a returned +1 is necessarily a genuine forced win and no full solve is needed. Pruning: an immediate win; two opposing threats lose; one threat forces the reply.
-
-Checks: reproduces n=3,4 (draw) and n=5 (win, first appearing at depth 17). For n=6 the whole strategy tree was walked, every reply at every node, confirming all 54,480,689 leaves are completed squares. First player opens at c4.
-
-Machine-checked, not refereed. C sources and logs available on request. Keith Adler, @keithadler on X.
