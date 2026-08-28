@@ -1,0 +1,28 @@
+# Square achievement game on an n x n grid -- results
+# depth-13 (or noted) forced-win searches, Fri Aug 28 12:17:39 PDT 2026
+
+n=3: (see n3/n4/n5 logs; reproduces Jenrich 2012)
+n=4: (see n3/n4/n5 logs; reproduces Jenrich 2012)
+n=5: (see n3/n4/n5 logs; reproduces Jenrich 2012)
+n=6: n=6 RESULT: FIRST PLAYER WINS (within 13 plies)
+n=7: n=7 RESULT: FIRST PLAYER WINS (within 13 plies)
+n=8: n=8 RESULT: FIRST PLAYER WINS (within 13 plies)
+n=9: n=9 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 21674452]
+n=10: n=10 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 56785588]
+n=11: n=11 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 116660038]
+n=12: n=12 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 231698908]
+n=13: n=13 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 735265715]
+n=14: n=14 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 746507072]
+
+n=6 strategy certificate:
+n=6 depth=13 root value +1
+  WIN: c4 a6 c6 b6 b5 d6 e6 f6 e4
+  WIN: c4 a6 c6 b6 b5 d6 e6 a5 e4
+  WIN: c4 a6 c6 b6 b5 d6 e6 c5 e4
+  WIN: c4 a6 c6 b6 b5 d6 e6 d5 e4
+  WIN: c4 a6 c6 b6 b5 d6 e6 e5 e4
+  WIN: c4 a6 c6 b6 b5 d6 e6 f5 e4
+n=6 strategy verified: 56857431 first-player decision nodes, 54480689 winning leaves
+
+independent implementation (sq2, no TT/symmetry/ordering):
+sq2 n=4 depth=17 value=+0 nodes=63492032

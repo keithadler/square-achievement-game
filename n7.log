@@ -1,0 +1,8 @@
+n=7 cells=49 squares=91
+depth  1: value +0   nodes 50
+depth  3: value +0   nodes 585
+depth  5: value +0   nodes 12798
+depth  7: value +0   nodes 116811
+depth  9: value +0   nodes 1000677
+depth 11: value +0   nodes 13111258
+depth 13: value +1   nodes 2644635
