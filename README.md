@@ -116,7 +116,7 @@ n = 4 draw over 63,492,032 nodes.
 
 **Optimisations removed.** `sq3strict.c` disables both symmetry folding and the
 depth-independent transposition-table storage — the two places where a bug could
-plausibly manufacture a win. Re-run in that configuration, n = 6..10 return the
+plausibly manufacture a win. Re-run in that configuration, n = 6..11 return the
 same answers at substantially higher node counts:
 
 | n | normal | strict |
@@ -126,14 +126,23 @@ same answers at substantially higher node counts:
 | 8 | 5,682,421 | 26,380,743 |
 | 9 | 21,674,452 | 119,962,990 |
 | 10 | 56,785,588 | 130,171,084 |
+| 11 | 116,660,038 | 658,263,739 |
 
-**The strategy is certified, not just scored.** `sq4.c` walks the entire winning
-strategy tree for n = 6 — every first-player move and *every* legal reply at
-every node — and verifies that each of its 54,480,689 leaves is a genuinely
-completed square owned by the first player, across 56,857,431 decision nodes. It
-aborts if the second player could ever complete a square first. It never did.
-This check does not rely on the pruning rules at all: it terminates only on
-squares it can see on the board.
+**The strategy is certified, not just scored.** `sq4.c` walks an entire winning
+strategy tree — every first-player move and *every* legal reply at every node —
+and verifies that each leaf is a genuinely completed square owned by the first
+player. It aborts if the second player could ever complete a square first.
+Neither run aborted.
+
+| n | decision nodes | winning leaves |
+|---:|---:|---:|
+| 6 | 56,857,431 | 54,480,689 |
+| 7 | 412,121,227 | 400,880,087 |
+
+This is the strongest check here, because it does not rely on the pruning rules
+at all: it terminates only on squares it can see on the board. Two certificates
+at different board sizes are much harder to explain away as a solver artefact
+than one.
 
 ## Files
 
@@ -151,7 +160,7 @@ squares it can see on the board.
 
 These results are machine-checked but have **not** been refereed, and the
 checks above are all my own code checking my own code. The certificate for
-n = 6 is the strongest single piece of evidence, because it verifies completed
+n = 6 and n = 7 are the strongest evidence, because they verify completed
 squares directly rather than trusting the search. Independent reproduction is
 genuinely wanted — the whole point of the MIT licence here is that anyone can
 take these four files and confirm or demolish the claim.

@@ -1,0 +1,8 @@
+n=7 depth=13 root value +1
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 g7 b5
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 a6 b5
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 d6 b5
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 e6 b5
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 f6 b5
+  WIN: c5 a7 e7 b7 b6 c7 d7 f7 c6 g6 b5
+n=7 strategy verified: 412121227 first-player decision nodes, 400880087 winning leaves
