@@ -164,10 +164,20 @@ than one.
 | `RESULTS.txt` | collected results and per-run node counts |
 | `*.log` | raw solver output from the runs quoted above |
 
+## Status
+
+An independent literature check in response to
+[a MathOverflow question about these cases](https://mathoverflow.net/questions/514742/)
+found no prior work on 6 ≤ n ≤ 14, consistent with this being the first
+resolution of those cases. The remaining open direction, as noted there, is a
+*conceptual* proof — an explicit human-readable strategy in the style of
+Jenrich's n = 5 argument. The uniform 13-ply bound suggests the winning
+mechanism is local rather than board-dependent, which is encouraging for that.
+
 ## Caveats
 
 These results are machine-checked but have **not** been refereed, and the
-checks above are all my own code checking my own code. The certificate for
+checks above are all my own code checking my own code. The certificates for
 n = 6 and n = 7 are the strongest evidence, because they verify completed
 squares directly rather than trusting the search. Independent reproduction is
 genuinely wanted — the whole point of the MIT licence here is that anyone can
