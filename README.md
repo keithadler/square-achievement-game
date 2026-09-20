@@ -1,6 +1,11 @@
 # Square achievement game on an n × n grid
 
-**Result: the first player wins for every n ≥ 5, and from n = 6 onward the win is forced within 13 plies.**
+**Result: the first player wins for every n ≥ 5.**
+
+*(Correction, 2026-09-20: this file previously said the win is forced within 13
+plies for every n ≥ 6. That number counted the search horizon rather than the
+line of play; see [How many plies](#how-many-plies) below. The outcome is
+unaffected.)*
 
 Two players alternately mark cells of an n × n grid. The first to own four cells
 at the corners of a square with horizontal and vertical sides wins. If the board
@@ -30,9 +35,11 @@ n ≤ 14 the outcome genuinely had to be searched rather than argued.
 
 ## Results
 
-Every one of the nine open sizes is a first-player win, forced within 13 plies.
+Every one of the nine open sizes is a first-player win. The `plies` column is the
+search depth at which the win was found, which is not the same as the length of
+the forced line; see [How many plies](#how-many-plies).
 
-| n | cells | squares | plies | search nodes |
+| n | cells | squares | search depth | search nodes |
 |---:|---:|---:|---:|---:|
 | 6 | 36 | 55 | 13 | 2,016,166 |
 | 7 | 49 | 91 | 13 | 2,644,635 |
@@ -46,6 +53,36 @@ Every one of the nine open sizes is a first-player win, forced within 13 plies.
 
 The depth of the win stops moving at n = 6. What grows is the cost of verifying
 the second player's replies, not the length of the forced sequence.
+
+## How many plies
+
+A depth-`d` search here does not certify a `d`-ply line. In `solve()` the
+immediate-win and double-threat shortcuts are tested **before** the `rem <= 0`
+horizon check, so a node with no remaining depth still returns a decided value:
+one ply later for an immediate win, two for a double threat that cannot be
+blocked. Unrolling that, a search with `rem = R` certifies lines up to `R + 2`
+plies, so depth 13 certifies 15.
+
+Re-run with the shortcuts charged their true cost (`rem >= 1` for the immediate
+win, `rem >= 2` for the double threat), the picture is not uniform:
+
+| n | forced within | established by |
+|---|---|---|
+| 6, 7, 8 | **15 plies** | depth 13 runs to exhaustion and returns undecided; depth 15 returns a win |
+| 9, 10 | **13 plies** | a 13-ply forced-win certificate, checked in Lean |
+| 11 – 14 | not yet determined | the exhaustive depth-13 run has not completed |
+
+14 is impossible by parity, the first player's winning move falling on an odd
+ply. None of this touches the outcome: the shortcuts fire only on a genuinely
+forced win or loss, which is exactly what makes a horizon-scored search
+conclusive. The ply count was a separate claim riding alongside it.
+
+A second instance of the same class of error is worth recording. The
+transposition table is reused when `sl->rem >= rem`, which is correct for an
+exact game value and wrong for a ply-bounded one: "decided within `R` plies"
+implies "decided within `r` plies" only for `r >= R`. This cannot affect the
+win/loss result, but any ply count read off a run that used the table is
+unreliable for the same reason.
 
 ## Why a shallow search settles it
 

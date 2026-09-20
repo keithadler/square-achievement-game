@@ -1,18 +1,27 @@
 # Square achievement game on an n x n grid -- results
 # depth-13 (or noted) forced-win searches, Fri Aug 28 12:17:39 PDT 2026
+#
+# CORRECTION 2026-09-20. The "within 13 plies" below is the search depth, not
+# the length of the forced line. solve() tests the horizon after its
+# immediate-win and double-threat shortcuts, so a depth-R search certifies
+# lines up to R+2 plies. With exact accounting: n = 6, 7, 8 are 15 plies
+# (depth 13 exhausts and returns undecided); n = 9, 10 are 13 plies, each with
+# a forced-win certificate checked in Lean; n = 11..14 not yet determined.
+# The outcome -- first player wins for all nine -- is unaffected.
+# See README.md, "How many plies", and github.com/keithadler/square-game-lean.
 
 n=3: (see n3/n4/n5 logs; reproduces Jenrich 2012)
 n=4: (see n3/n4/n5 logs; reproduces Jenrich 2012)
 n=5: (see n3/n4/n5 logs; reproduces Jenrich 2012)
-n=6: n=6 RESULT: FIRST PLAYER WINS (within 13 plies)
-n=7: n=7 RESULT: FIRST PLAYER WINS (within 13 plies)
-n=8: n=8 RESULT: FIRST PLAYER WINS (within 13 plies)
-n=9: n=9 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 21674452]
-n=10: n=10 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 56785588]
-n=11: n=11 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 116660038]
-n=12: n=12 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 231698908]
-n=13: n=13 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 735265715]
-n=14: n=14 RESULT: FIRST PLAYER WINS within 13 plies [depth 13: value +1  nodes 746507072]
+n=6: n=6 RESULT: FIRST PLAYER WINS (search depth 13; see CORRECTION above)
+n=7: n=7 RESULT: FIRST PLAYER WINS (search depth 13; see CORRECTION above)
+n=8: n=8 RESULT: FIRST PLAYER WINS (search depth 13; see CORRECTION above)
+n=9: n=9 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 21674452]
+n=10: n=10 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 56785588]
+n=11: n=11 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 116660038]
+n=12: n=12 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 231698908]
+n=13: n=13 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 735265715]
+n=14: n=14 RESULT: FIRST PLAYER WINS at search depth 13 (see CORRECTION above) [depth 13: value +1  nodes 746507072]
 
 n=6 strategy certificate:
 n=6 depth=13 root value +1
